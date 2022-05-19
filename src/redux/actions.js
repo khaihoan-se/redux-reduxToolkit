@@ -11,3 +11,15 @@ export const searchFilter = (text) => {
         payload: text
     }
 }
+export const statusFilterChange = (status) => {
+    return {
+        type: 'filters/STATUS_FILTER_CHANGE',
+        payload: status
+    }
+}
+export const prioritiesFilterChange = (prioritys) => {
+    return {
+        type: 'filters/prioritiesFilterChange',
+        payload: prioritys
+    }
+}

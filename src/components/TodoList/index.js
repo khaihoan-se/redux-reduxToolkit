@@ -4,7 +4,7 @@ import Todo from '../Todo';
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from '../../redux/actions';
 import {v4 as uuidv4} from "uuid"
-import { todoListSelector, searchTextSelector } from '../../redux/selectors';
+import { todoRemainingSelector } from '../../redux/selectors';
 
 export default function TodoList() {
   const [todoName, setTodoName] = React.useState('');
@@ -12,8 +12,7 @@ export default function TodoList() {
 
   const dispatch = useDispatch();
 
-  const todoList = useSelector(todoListSelector);
-  const searchText = useSelector(searchTextSelector);
+  const todoList = useSelector(todoRemainingSelector);
 
   const handleInputChangeTodoName = (e) => {
     setTodoName(e.target.value);
@@ -40,7 +39,7 @@ export default function TodoList() {
     <Row style={{ height: 'calc(100% - 40px)' }}>
       <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
         {todoList.map(todo => (
-          <Todo key={todo.id} name={todo.name} prioriry={todo.prioriry} />
+          <Todo key={todo.id} name={todo.name} prioriry={todo.prioriry} completed={todo.completed} />
         ))}
       </Col>
       <Col span={24}>
